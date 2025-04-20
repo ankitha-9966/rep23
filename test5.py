@@ -1,4 +1,4 @@
-from banking import  add_beneficiary, fund_transfer, remove_beneficiary, view_beneficiary_list
+from transaction2 import  add_beneficiary, fund_transfer, remove_beneficiary, view_beneficiary_list
 def test_case2():
     assert(add_beneficiary("Ankitha", "001"))
     assert(add_beneficiary("Ancy", "002"))

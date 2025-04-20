@@ -4,15 +4,20 @@ dic = {}
 balance = 10000
 
 def add_beneficiary(name, id):
-    dic[name] = id
-    beneficiary_list.append(dic)
+    if name not in dic:
+        dic[name] = id
+        beneficiary_list.append({name:id})
+        return True
+    return False
+
+    
 
 def fund_transfer(name, amount):
     global balance
     if name in dic:
-        if balance > 1000:
+        if balance > amount:
             balance -= amount
-            return "Transaction successfull"
+            return "Transaction successful"
         else:
             return "Insufficient balance"
     else:
@@ -22,6 +27,8 @@ def fund_transfer(name, amount):
 def remove_beneficiary(name):
     if name in dic:
         dic.pop(name)
+        global beneficiary_list
+        beneficiary_list=[b for b in beneficiary_list if name not in b]
         return "Beneficiary removed successfully"
     else:
         return "Beneficiary not found"
